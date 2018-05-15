@@ -1,10 +1,13 @@
 const functions = require('firebase-functions');
+
 const admin = require('firebase-admin');
 admin.initializeApp();
+
 const cookieParser = require('cookie-parser')();
 const cors = require('cors');
 const express = require("express");
 const shopApp = express();
+
 const Shops = require('./controllers/Shops')
 
 /*
@@ -16,8 +19,9 @@ shopApp.use(validateFirebaseIdToken);
 // Add middleware to authenticate requests
 //app.use(myMiddleware);
 */
+
 shopApp.delete("/:id",Shops.deleteShop)
-shopApp.post("/",Shops.createShop)
+
 
 exports.v1_shops = functions.https.onRequest(shopApp)
 
