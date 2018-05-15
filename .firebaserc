@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "promociones-203414"
+    "default": "promociones-203414",
+    "promociones": "promociones-203414"
   }
 }
