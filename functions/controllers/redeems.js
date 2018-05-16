@@ -1,5 +1,8 @@
 
 const validator = require('../validator')
+const redeemRequester = require('../database_request/redeem-request')
+
+
 const createRedeem = (req, res) => {
   let userOwnerId = req.user.uid
   let userId = req.body.userId
@@ -20,14 +23,19 @@ const createRedeem = (req, res) => {
 
       //validar que este halla disponibles
       return validator.validateRemainingCoupons(couponId).then(() => {
-
-          //insertar redencion
-          return res.status(400).json({code:400,response:"Ok"})
+        
+        //insertar redencion
+        return redeemRequester.createRedeem(userId,couponId).then(redeemData => {
+            return res.status(200).json({code:200,redeem:redeemData})
+        }).catch(err => {
+          console.log("Error creating redeem:", err)
+          return res.status(400).json({code:400,error:{description:"Error creating redeem: "+err,
+            userMessage:"No se pudo redimir, intenta más tarde"}})
+        })
           
       }).catch(error => {
         return res.status(400).json({code:400,error:{description:error.message,
           userMessage:"El cupón está agotado"}})
-          
       })
     }).catch(error =>{
       return res.status(400).json({code:400,error:{description:error.message,
