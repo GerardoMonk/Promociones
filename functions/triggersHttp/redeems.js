@@ -1,66 +1,15 @@
-
+const functions = require('firebase-functions');
 const validator = require('../validator')
 const redeemRequester = require('../database/redeem-request')
 
-
-const createRedeem = (req, res) => {
-  let userOwnerId = req.user.uid
-  let userId = req.body.userId
-  let couponId = req.body.couponId
-
-  if(validator.anyValueNull([userId,couponId]) || 
-    !validator.areValuesTypeOf([userId,couponId],'string'))
-    {
-      res.status(400).json({code:400,error:{description:"parsing exception, missing parameters or some wrong typeof",
-                                              userMessage:"Ocurrió un problema con el servidor"}});	
-    }
-  
-  //validar cupon pertenesca al dueño
-  validator.validateCouponOwner(couponId,userOwnerId).then(() => {
-
-      //validar que este activo   
-    return validator.validateCouponActive(couponId).then(()=>{
-
-      //validar que este halla disponibles
-      return validator.validateRemainingCoupons(couponId).then(() => {
-        
-        //insertar redencion
-        return redeemRequester.createRedeem(userId,couponId).then(redeemData => {
-            return res.status(200).json({code:200,redeem:redeemData})
-        }).catch(err => {
-          console.log("Error creating redeem:", err)
-          return res.status(400).json({code:400,error:{description:"Error creating redeem: "+err,
-            userMessage:"No se pudo redimir, intenta más tarde"}})
-        })
-          
-      }).catch(error => {
-        return res.status(400).json({code:400,error:{description:error.message,
-          userMessage:"El cupón está agotado"}})
-      })
-    }).catch(error =>{
-      return res.status(400).json({code:400,error:{description:error.message,
-        userMessage:"El cupón no es vigente"}})
-    })
-  }).catch(error => {
-    return res.status(400).json({code:400,error:{description:error.message,
-                         userMessage:"El cupón no pertenece alguno de tus comercios"}})
-     
-  })
-}
-
-
-const prueba = (data, context) => {
+const createRedeem = (data, context) => {
   // Checking that the user is authenticated.
   if (!context.auth) {
-  // Throwing an HttpsError so that the client gets the error details.
-    return {code:403,
-            error:{
-            description:"Error while verifying Firebase ID token",
-            userMessage:"No se pudo acceder al servicio"
-            }
-           }
+    
+    throw new functions.https.HttpsError('failed-precondition',
+    'No se pudo acceder al servicio',
+    "Error while verifying Firebase ID token")
   }
-
 
   let userOwnerId = context.auth.uid;
   let userId = data.userId
@@ -69,56 +18,50 @@ const prueba = (data, context) => {
   if(validator.anyValueNull([userId,couponId]) || 
     !validator.areValuesTypeOf([userId,couponId],'string'))
     {
-      return {code:400,
-              error:{
-                  description:"parsing exception, missing parameters or some wrong typeof",
-                  userMessage:"Ocurrió un problema con el servidor"
-                }
-              }
+         throw new functions.https.HttpsError('invalid-argument',
+          'Ocurrió un problema con el servidor',
+         "parsing exception, missing parameters or some wrong typeof")
     }
   
   //validar cupon pertenesca al dueño
-  validator.validateCouponOwner(couponId,userOwnerId).then(() => {
+  return validator.validateCouponOwner(couponId,userOwnerId).then(() => {
 
       //validar que este activo   
     return validator.validateCouponActive(couponId).then(()=>{
 
       //validar que este halla disponibles
       return validator.validateRemainingCoupons(couponId).then(() => {
-        
+
         //insertar redencion
         return redeemRequester.createRedeem(userId,couponId).then(redeemData => {
-            return {code:200,redeem:redeemData}
+            return redeemData
         }).catch(err => {
           console.log("Error creating redeem:", err)
-          return {code:400,error:{description:"Error creating redeem: "+err,
-            userMessage:"No se pudo redimir, intenta más tarde"}}
+          
+          throw new functions.https.HttpsError('internal',
+                               "No se pudo redimir, intenta más tarde",
+                               "Error creating redeem: "+err)
         })
           
       }).catch(error => {
-        return {code:400,error:{description:error.message,
-          userMessage:"El cupón está agotado"}}
+        throw new functions.https.HttpsError('internal',
+            "El cupón está agotado",
+            error.message)
       })
     }).catch(error =>{
-      return  {code:400,
-                error:{
-                  description:error.message,
-                  userMessage:"El cupón no es vigente"
-                }
-               }
+      throw new functions.https.HttpsError('internal',
+              "El cupón no es vigente",
+              error.message)
+
          })
   }).catch(error => {
-    return {code:400,
-      error:{
-        description:error.message,
-        userMessage:"El cupón no pertenece alguno de tus comercios"
-      }
-      }
+    throw new functions.https.HttpsError('internal',
+                "El cupón no pertenece alguno de tus comercios",
+                error.message)
     })
 }
 
 
 module.exports = {
-  createRedeem,
-  prueba
+  createRedeem
 }

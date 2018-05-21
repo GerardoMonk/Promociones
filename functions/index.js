@@ -15,17 +15,14 @@ const CouponsObsv = require('./triggersObservers/coupons')
 const RedeemsObsv = require('./triggersObservers/redeems')
 const RatingsObsv = require('./triggersObservers/ratings')
 
-
-
-
+/*
 redeemsApp.use(cors({ origin: true }));
 redeemsApp.use(cookieParser);
 redeemsApp.use(auth);
 redeemsApp.post("/",RedeemsHttp.createRedeem)
+*/
 
-exports.v1_redeems= functions.https.onRequest(RedeemsHttp.createRedeem)
-
-exports.prueba = functions.https.onCall(RedeemsHttp.prueba);
+exports.v1_createRedeem = functions.https.onCall(RedeemsHttp.createRedeem);
 
 exports.inactivateCouponsOfInactiveShop =  ShopsObsv.inactivateCouponsOfInactiveShop
 

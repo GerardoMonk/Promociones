@@ -16,9 +16,14 @@ const createRedeem = (userId,couponId) => {
         }
 
         var addDoc = collection.add(redeemDocData).then(ref => {
-            res({ userId: userId,
-                couponId: couponId,
-                redeemId:ref.id})
+            res({ redemm:{
+                    id:ref.id,
+                    data:{
+                        userId: userId,
+                        couponId: couponId
+                    }
+                 } 
+                })
             return
          }).catch(err => {
             console.log("Error to createRedeem", err)

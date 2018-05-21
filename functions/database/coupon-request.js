@@ -1,6 +1,10 @@
 const admin = require('firebase-admin')
 const db = admin.firestore()
+
+
 const collection = db.collection("coupons")
+var Validator = require("../validator")
+
 const RendundatData = require('./rendundantData')
 var FieldValue = require('firebase-admin').firestore.FieldValue;
 
@@ -119,7 +123,6 @@ const subtractOneRemaingOnCoupon = (couponId) => {
           })
 }
 
-
 const aggregateCouponRating = (couponId,ratingVal) => {
      var docRef = collection.doc(couponId);
 
@@ -129,11 +132,17 @@ const aggregateCouponRating = (couponId,ratingVal) => {
             if (!doc.exists) {
                 throw Error("Document does not exist! couponId:" + couponId)
             }
-            var oldNumRatings =  doc.data('numRatings') || 0
+
+            if (typeof ratingVal !== 'number')
+            {
+              throw Error("ratingVal is not a number")
+            }
+
+            var oldNumRatings =  doc.data().numRatings || 0 
             var newNumRatings = oldNumRatings + 1
-    
+            var oldAvgRating = doc.data().avgRating || 0
             // Compute new average rating
-            var oldRatingTotal = doc.data('avgRating') * oldNumRatings;
+            var oldRatingTotal = oldAvgRating * oldNumRatings;
             var newAvgRating = (oldRatingTotal + ratingVal) / newNumRatings;
     
             // Update restaurant info
