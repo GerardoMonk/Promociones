@@ -1,15 +1,15 @@
-const cupons = require("../database_request/coupon-request") 
-const shops = require("../database_request/shop-request") 
+const Cupons = require("../database/coupon-request") 
+const Shops = require("../database/shop-request") 
 
 
 const validateCouponOwner = (cuponId, userId) => {
     return new Promise((res,rej) => {
-        let cuponReq = cupons.getCoupon(cuponId)
+        let cuponReq = Cupons.getCoupon(cuponId)
 
         cuponReq.then( coupon => {
-             let shopId =  coupon.data().shop.id
+             let shopId =  coupon.data().shopId
 
-             let shopsReq = shops.getShop(shopId)
+             let shopsReq = Shops.getShop(shopId)
     
              return shopsReq.then(shop => {
                 if (shop.data().userId === userId){
@@ -35,7 +35,7 @@ const validateCouponOwner = (cuponId, userId) => {
 
   const validateCouponActive = (cuponID) => {
     return new Promise((res,rej) => {
-        let cuponReq = cupons.getCoupon(cuponID)
+        let cuponReq = Cupons.getCoupon(cuponID)
 
         return cuponReq.then( coupon => {
              if (coupon.data().isActive){
@@ -54,7 +54,7 @@ const validateCouponOwner = (cuponId, userId) => {
 
   const validateRemainingCoupons = (cuponID) => {
     return new Promise((res,rej) => {
-        let cuponReq = cupons.getCoupon(cuponID)
+        let cuponReq = Cupons.getCoupon(cuponID)
         return cuponReq.then( coupon => {
              if (coupon.data().type.type === "unlimited"){
                  res()

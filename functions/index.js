@@ -9,39 +9,31 @@ const cors = require('cors');
 const express = require("express");
 const redeemsApp = express();
 const auth = require('./midlewares/auth')
-const Redeems = require('./controllers/redeems')
+const RedeemsHttp = require('./triggersHttp/redeems')
+const ShopsObsv = require('./triggersObservers/shops')
+const CouponsObsv = require('./triggersObservers/coupons')
+const RedeemsObsv = require('./triggersObservers/redeems')
+
+
+
 
 redeemsApp.use(cors({ origin: true }));
 redeemsApp.use(cookieParser);
 redeemsApp.use(auth);
-redeemsApp.post("/",Redeems.createRedeem)
+redeemsApp.post("/",RedeemsHttp.createRedeem)
 
-exports.v1_redeems= functions.https.onRequest(redeemsApp)
+exports.v1_redeems= functions.https.onRequest(RedeemsHttp.createRedeem)
 
+exports.prueba = functions.https.onCall(RedeemsHttp.prueba);
 
-exports.v1_updateUser = functions.firestore
-    .document('shops/{shopID}')
-    .onUpdate(event => {
-        // Get an object representing the document
-        // e.g. {'name': 'Marie', 'age': 66}
-        const newValue = event.data.data();
+exports.inactivateCouponsOfInactiveShop =  ShopsObsv.inactivateCouponsOfInactiveShop
 
-        // ...or the previous value before this update
-        const previousValue = event.data.previous.data();
+exports.updateShopRendundantData =  ShopsObsv.updateShopRendundantData
 
+exports.prepareNewCoupon =  CouponsObsv.prepareNewCoupon
 
-        
-        // access a particular field as you would any JS property
-        const name = newValue.name;
+exports.updateCouponsStatus =  RedeemsObsv.updateCouponsStatus
 
-        // perform desired operations ...
-
-        //validar que el cambio este en el campo isActive y halla cambiado a false
-
-        //Ir por todos los cupones de ese shop
-
-        //cambiar el isActive a false de todos los cupones
-    });
 
 /*
     exports.aggregateRatings = firestore

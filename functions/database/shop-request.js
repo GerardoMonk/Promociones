@@ -15,7 +15,7 @@ const getShop = (id) => {
         }
       return
       }).catch(err =>{
-        console.log("Error getting Shops ", err)
+        console.log("Error getting Shops", err)
          rej(err)
          return
       })

@@ -6,8 +6,13 @@ const collection = db.collection("redeems")
 var FieldValue = require('firebase-admin').firestore.FieldValue;
 
 
-const createRedeem = (userId,couponId) => {
+const redeemCoupon = (userId,couponId) => {
     return new Promise((res,rej) => {
+
+
+
+        
+
 
         let redeemDocData =  {
             userId: userId,
