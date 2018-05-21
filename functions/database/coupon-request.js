@@ -2,6 +2,7 @@ const admin = require('firebase-admin')
 const db = admin.firestore()
 const collection = db.collection("coupons")
 const RendundatData = require('./rendundantData')
+var FieldValue = require('firebase-admin').firestore.FieldValue;
 
 const getCoupon = (id) => {
     return new Promise((res,rej) => {
@@ -83,6 +84,15 @@ const createRemainingOnCoupon = (couponDoc) => {
  return 
 }
 
+const createTimestamp = (couponDoc) => {
+  couponDoc.ref.update({
+    createAt:FieldValue.serverTimestamp()
+  })
+
+  console.log("Create createdAt cuopon.shop ID: " + couponDoc.id)
+ return 
+}
+
 const subtractOneRemaingOnCoupon = (couponId) => {
       var docRef = collection.doc(couponId);
 
@@ -93,14 +103,46 @@ const subtractOneRemaingOnCoupon = (couponId) => {
                     throw Error("Document does not exist! couponId:" + couponId);
                 }
                 if (doc.data().type.type === "limited"){
-                  var newRemaining = doc.data().type.remaining - 1;
-                   transaction.update(docRef, { "type.remaining": newRemaining || 0});
+                  var newRemaining = doc.data().type.remaining - 1
+                   transaction.update(docRef, { "type.remaining": newRemaining || 0})
+                   
+                   if (newRemaining === 0) {
+                    updateCouponActiveStatus(doc,false)
+                    console.log("coupon inactivated remaining = 0 couponId:" + couponId)
+                   }
+
                 }else{
                   throw Error("Is not type limited couponId:" + couponId);
                 }
                 return
             });
           })
+}
+
+
+const aggregateCouponRating = (couponId,ratingVal) => {
+     var docRef = collection.doc(couponId);
+
+      return  db.runTransaction(function(transaction) {
+        // This code may get re-run multiple times if there are conflicts.
+        return transaction.get(docRef).then(function(doc) {
+            if (!doc.exists) {
+                throw Error("Document does not exist! couponId:" + couponId)
+            }
+            var oldNumRatings =  doc.data('numRatings') || 0
+            var newNumRatings = oldNumRatings + 1
+    
+            // Compute new average rating
+            var oldRatingTotal = doc.data('avgRating') * oldNumRatings;
+            var newAvgRating = (oldRatingTotal + ratingVal) / newNumRatings;
+    
+            // Update restaurant info
+            return transaction.update(docRef, {
+              avgRating: newAvgRating,
+              numRatings: newNumRatings
+            });
+        });
+      })
 }
 
 
@@ -115,6 +157,8 @@ const subtractOneRemaingOnCoupon = (couponId) => {
     updateShopDataOnAllCoupons,
     updateShopDataOnCoupon,
     updateCouponActiveStatus,
+    createTimestamp,
     createRemainingOnCoupon,
-    subtractOneRemaingOnCoupon
+    subtractOneRemaingOnCoupon,
+    aggregateCouponRating
   }

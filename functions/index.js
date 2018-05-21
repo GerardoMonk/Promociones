@@ -13,6 +13,7 @@ const RedeemsHttp = require('./triggersHttp/redeems')
 const ShopsObsv = require('./triggersObservers/shops')
 const CouponsObsv = require('./triggersObservers/coupons')
 const RedeemsObsv = require('./triggersObservers/redeems')
+const RatingsObsv = require('./triggersObservers/ratings')
 
 
 
@@ -34,32 +35,5 @@ exports.prepareNewCoupon =  CouponsObsv.prepareNewCoupon
 
 exports.updateRemainingCoupons =  RedeemsObsv.updateRemainingCoupons
 
-/*
-    exports.aggregateRatings = firestore
-  .document('restaurants/{restId}/ratings/{ratingId}')
-  .onWrite(event => {
-    // Get value of the newly added rating
-    var ratingVal = event.data.get('rating');
+exports.aggregateCouponRanking =  RatingsObsv.aggregateCouponRating
 
-    // Get a reference to the restaurant
-    var restRef = db.collection('restaurants').document(event.params.restId);
-
-    // Update aggregations in a transaction
-    return db.transaction(transaction => {
-      return transaction.get(restRef).then(restDoc => {
-        // Compute new number of ratings
-        var newNumRatings = restDoc.data('numRatings') + 1;
-
-        // Compute new average rating
-        var oldRatingTotal = restDoc.data('avgRating') * restDoc.data('numRatings');
-        var newAvgRating = (oldRatingTotal + ratingVal) / newNumRatings;
-
-        // Update restaurant info
-        return transaction.update(restRef, {
-          avgRating: newAvgRating,
-          numRatings: newNumRatings
-        });
-      });
-    });
-});
-*/

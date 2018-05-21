@@ -11,6 +11,7 @@ let prepareNewCoupon = functions.firestore
         return ShopRequester.getShop(shopId).then(shopDoc =>{
             CouponRequester.updateShopDataOnCoupon(couponDoc,shopDoc)
             CouponRequester.updateCouponActiveStatus(couponDoc,true)
+            CouponRequester.createTimestamp(couponDoc)
             if (couponDoc.data().type.type === "limited"){
               CouponRequester.createRemainingOnCoupon(couponDoc)
             }
