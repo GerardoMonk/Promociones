@@ -48,8 +48,6 @@ const updateCouponActiveStatus = (couponDoc,isActive) => {
    return 
 }
 
-
-
 const updateShopDataOnAllCoupons = (shopDoc) => {
   return new Promise((res,rej) => {
    let query = collection.where('shopId','==',shopDoc.id)

@@ -32,8 +32,7 @@ exports.updateShopRendundantData =  ShopsObsv.updateShopRendundantData
 
 exports.prepareNewCoupon =  CouponsObsv.prepareNewCoupon
 
-exports.updateCouponsStatus =  RedeemsObsv.updateCouponsStatus
-
+exports.updateRemainingCoupons =  RedeemsObsv.updateRemainingCoupons
 
 /*
     exports.aggregateRatings = firestore

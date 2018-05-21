@@ -2,7 +2,7 @@ const functions = require('firebase-functions');
 const RedeemRequester = require('../database/redeem-request')
 const CouponRequester = require('../database/coupon-request')
 
-let updateCouponsStatus = functions.firestore
+let updateRemainingCoupons = functions.firestore
     .document('redeems/{redeemId}')
     .onCreate(redeemDoc => {
         let couponId = redeemDoc.data().couponId
@@ -19,5 +19,5 @@ let updateCouponsStatus = functions.firestore
 
 
  module.exports = {
-    updateCouponsStatus
+    updateRemainingCoupons
 }
