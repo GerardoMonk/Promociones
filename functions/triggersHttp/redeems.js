@@ -46,17 +46,23 @@ const createRedeem = (data, context) => {
         })
           
       }).catch(error => {
+        console.log( error.message)
+
         throw new functions.https.HttpsError('internal',
             "El cupón está agotado",
             error.message)
       })
     }).catch(error =>{
+      console.log(  error.message)
+
       throw new functions.https.HttpsError('internal',
               "El cupón no es vigente",
               error.message)
 
          })
   }).catch(error => {
+    console.log( "El cupón no pertenece alguno de los comercios", error.message)
+
     throw new functions.https.HttpsError('internal',
                 "El cupón no pertenece alguno de tus comercios",
                 error.message)

@@ -15,18 +15,15 @@ const validateCouponOwner = (cuponId, userId) => {
                 if (shop.data().userId === userId){
                     res()
                 }else{
-                    console.log("shop.userId " + shop.data().userId + " no match with userId " + userId)
                     rej(new Error("shop.userId " + shop.data().userId + " no match with userId " + userId))
                 }
                 return
              }).catch( err =>{
-                console.log("Error getting shop:", err)
                 rej(new Error("Error getting shop: " + err))
                 return
              })
     
         }).catch(err =>{
-            console.log("Error getting coupon:", err)
             rej(new Error("Error getting coupon: " + err))
             return
         })
@@ -46,7 +43,6 @@ const validateCouponOwner = (cuponId, userId) => {
              }
              return
         }).catch(err =>{
-            console.log("Error getting coupon:", err)
             rej(new Error("Error getting coupon: " + err))
             return
         })
@@ -71,7 +67,6 @@ const validateCouponOwner = (cuponId, userId) => {
              }
              return
         }).catch(err =>{
-            console.log("Error getting coupon:", err)
             rej(new Error("Error getting coupon: " + err))
             return
         })
