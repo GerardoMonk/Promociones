@@ -34,6 +34,8 @@ const createRedeem = (data, context) => {
 
         //insertar redencion
         return redeemRequester.createRedeem(userId,couponId).then(redeemData => {
+           console.log("Redeem Created:",redeemData)
+
             return redeemData
         }).catch(err => {
           console.log("Error creating redeem:", err)

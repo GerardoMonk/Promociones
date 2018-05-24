@@ -15,7 +15,8 @@ const validateCouponOwner = (cuponId, userId) => {
                 if (shop.data().userId === userId){
                     res()
                 }else{
-                    rej(new Error("shop.userId "+shop.data().userId+" no match with userId "+userId))
+                    console.log("shop.userId " + shop.data().userId + " no match with userId " + userId)
+                    rej(new Error("shop.userId " + shop.data().userId + " no match with userId " + userId))
                 }
                 return
              }).catch( err =>{
