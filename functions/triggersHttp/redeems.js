@@ -46,6 +46,7 @@ const createRedeem = (data, context) => {
       throw error
     })
   }).catch(error => {
+    console.log(error)
     throw new functions.https.HttpsError('internal',
                 error.name,
                 error.message)

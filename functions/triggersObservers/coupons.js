@@ -22,7 +22,6 @@ let prepareNewCoupon = functions.firestore
         })
 });
 
-
  module.exports = {
     prepareNewCoupon
 }

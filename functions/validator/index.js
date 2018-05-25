@@ -30,7 +30,7 @@ const validateCouponOwner = (cuponId, userId) => {
              })
     
         }).catch(err =>{
-            let error = rej(new Error("Error getting coupon: " + err))
+            let error =new Error("Error getting coupon: " + err)
             error.name = "SERVER_ERROR"
             console.log(error.name)
             rej(error)
