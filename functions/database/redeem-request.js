@@ -26,8 +26,10 @@ const createRedeem = (userId,couponId) => {
                 })
             return
          }).catch(err => {
-            console.log("Error to createRedeem", err)
-            rej(err)
+            console.log("Error creating redeem:", err)
+            const error = new Error(err); 
+            error.name = "SERVER_ERROR"        
+            rej(error)
             return
          })
     })

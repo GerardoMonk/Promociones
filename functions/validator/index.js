@@ -15,16 +15,25 @@ const validateCouponOwner = (cuponId, userId) => {
                 if (shop.data().userId === userId){
                     res()
                 }else{
-                    rej(new Error("shop.userId " + shop.data().userId + " no match with userId " + userId))
+                    let error = new Error("shop.userId " + shop.data().userId + " no match with userId " + userId)
+                    error.name = "WRONG_OWNER"
+                    console.log(error.name)
+                    rej(error)
                 }
                 return
              }).catch( err =>{
-                rej(new Error("Error getting shop: " + err))
+                 let error = new Error("Error getting shop: " + err)
+                 error.name = "SERVER_ERROR"
+                 console.log(error.name)
+                rej(error)
                 return
              })
     
         }).catch(err =>{
-            rej(new Error("Error getting coupon: " + err))
+            let error = rej(new Error("Error getting coupon: " + err))
+            error.name = "SERVER_ERROR"
+            console.log(error.name)
+            rej(error)
             return
         })
     }) 
@@ -36,14 +45,20 @@ const validateCouponOwner = (cuponId, userId) => {
         let cuponReq = Cupons.getCoupon(cuponID)
 
         return cuponReq.then( coupon => {
-             if (coupon.data().isActive){
+             if (coupon.data().active){
                  res()
              }else{
-                 rej(new Error("Coupon is inactive"))
+                let error = new Error("Coupon is inactive id:"+cuponID )
+                error.name = "INACTIVE_COUPON"
+                console.log(error.message)
+                 rej(error)
              }
              return
         }).catch(err =>{
-            rej(new Error("Error getting coupon: " + err))
+            let error = new Error("Error getting coupon: " + err)
+            error.name = "SERVER_ERROR"
+            console.log(error.message)
+            rej(error)
             return
         })
     }) 
@@ -57,17 +72,25 @@ const validateCouponOwner = (cuponId, userId) => {
                  res()
              }else if(coupon.data().type.type === "limited"){
                  if (coupon.data().type.remaining <= 0){
-                    rej(new Error("Coupon is out of stock"))
+                    let error = new Error("Coupon is out of stock")
+                    error.name = "OUT_OF_STOCK"
+                    console.log(error.message)
+                    rej(error)
                  }else{
                     res()
                 }
              }
              else{
-                rej(new Error("Ivalid coupon type:" + coupon.data().type.type ))
+                let error = new Error("Invalid coupon type:" + coupon.data().type.type)
+                error.name = "SERVER_ERROR"
+                console.log(error.message)
+                rej(error)
              }
              return
         }).catch(err =>{
-            rej(new Error("Error getting coupon: " + err))
+            let error = new Error("Error getting coupon: " + err)
+            error.name = "SERVER_ERROR"
+            rej(error)
             return
         })
     }) 

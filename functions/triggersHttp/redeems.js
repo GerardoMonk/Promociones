@@ -35,36 +35,19 @@ const createRedeem = (data, context) => {
         //insertar redencion
         return redeemRequester.createRedeem(userId,couponId).then(redeemData => {
            console.log("Redeem Created:",redeemData)
-
             return redeemData
-        }).catch(err => {
-          console.log("Error creating redeem:", err)
-          
-          throw new functions.https.HttpsError('internal',
-                               "No se pudo redimir, intenta más tarde",
-                               "Error creating redeem: "+err)
+        }).catch(error => {
+          throw error
         })
-          
       }).catch(error => {
-        console.log( error.message)
-
-        throw new functions.https.HttpsError('internal',
-            "El cupón está agotado",
-            error.message)
+        throw error
       })
     }).catch(error =>{
-      console.log(  error.message)
-
-      throw new functions.https.HttpsError('internal',
-              "El cupón no es vigente",
-              error.message)
-
-         })
+      throw error
+    })
   }).catch(error => {
-    console.log( "El cupón no pertenece alguno de los comercios", error.message)
-
     throw new functions.https.HttpsError('internal',
-                "El cupón no pertenece alguno de tus comercios",
+                error.name,
                 error.message)
     })
 }
