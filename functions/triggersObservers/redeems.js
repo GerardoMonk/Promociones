@@ -2,13 +2,13 @@ const functions = require('firebase-functions');
 const RedeemRequester = require('../database/redeem-request')
 const CouponRequester = require('../database/coupon-request')
 
-let updateRemainingCoupons = functions.firestore
+let updateRedeemsCounts = functions.firestore
     .document('redeems/{redeemId}')
     .onCreate(redeemDoc => {
         let couponId = redeemDoc.data().couponId
         let userId = redeemDoc.data().userId
 
-        return CouponRequester.subtractOneRemaingOnCoupon(couponId).then(() => {
+        return CouponRequester.updateCountsOnCoupon(couponId).then(() => {
               console.log("Transaction Subtract successfully committed! couponId:"+couponId);
               return 0
        }).catch(err =>{
@@ -19,5 +19,5 @@ let updateRemainingCoupons = functions.firestore
 
 
  module.exports = {
-    updateRemainingCoupons
+    updateRedeemsCounts
 }

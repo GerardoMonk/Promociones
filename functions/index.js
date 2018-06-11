@@ -30,7 +30,7 @@ exports.updateShopRendundantData =  ShopsObsv.updateShopRendundantData
 
 exports.prepareNewCoupon =  CouponsObsv.prepareNewCoupon
 
-exports.updateRemainingCoupons =  RedeemsObsv.updateRemainingCoupons
+exports.updateRedeemsCounts =  RedeemsObsv.updateRedeemsCounts
 
 exports.aggregateCouponRanking =  RatingsObsv.aggregateCouponRating
 
