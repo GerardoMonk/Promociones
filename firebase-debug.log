@@ -1,0 +1,347 @@
+[debug] [2018-06-14T14:56:45.722Z] ----------------------------------------------------------------------
+[debug] [2018-06-14T14:56:45.723Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy --only functions
+[debug] [2018-06-14T14:56:45.724Z] CLI Version:   3.18.4
+[debug] [2018-06-14T14:56:45.724Z] Platform:      darwin
+[debug] [2018-06-14T14:56:45.724Z] Node Version:  v8.11.1
+[debug] [2018-06-14T14:56:45.724Z] Time:          Thu Jun 14 2018 09:56:45 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:45.724Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-06-14T14:56:45.733Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-14T14:56:45.733Z] > authorizing via signed-in user
+[debug] [2018-06-14T14:56:45.734Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/promociones-203414  
+  
+ Thu Jun 14 2018 09:56:45 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:46.153Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:46.153Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/promociones-203414/tokens  
+  
+ Thu Jun 14 2018 09:56:46 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:46.630Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'promociones-203414'...
+[info] 
+[info] i  deploying functions
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script.
+[debug] [2018-06-14T14:56:50.385Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "firebase-admin": "~5.12.0",
+    "firebase-functions": "^1.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.12.0",
+    "eslint-plugin-promise": "^3.6.0"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-06-14T14:56:50.385Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/promociones-203414?view=CONSUMER_VIEW  
+  
+ Thu Jun 14 2018 09:56:50 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:50.386Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/promociones-203414?view=CONSUMER_VIEW  
+  
+ Thu Jun 14 2018 09:56:50 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:51.527Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:51.853Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2018-06-14T14:56:51.854Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/promociones-203414  
+  
+ Thu Jun 14 2018 09:56:51 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:52.521Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:52.522Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/243095405179:getServerAppConfig  
+  
+ Thu Jun 14 2018 09:56:52 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:53.081Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2018-06-14T14:56:53.083Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/promociones-203414/configs  
+  
+ Thu Jun 14 2018 09:56:53 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:53.368Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (60.32 KB) for uploading
+[debug] [2018-06-14T14:56:54.098Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/promociones-203414/locations/us-central1/functions:generateUploadUrl  
+  
+ Thu Jun 14 2018 09:56:54 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:54.436Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:54.437Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-e6221723-edbb-4b83-b3cf-9496f35f7c6b/86fed396-1f9e-4802-b8e3-079b61bf06a0.zip?GoogleAccessId=service-243095405179@gcf-admin-robot.iam.gserviceaccount.com&Expires=1528990014&Signature=LYReIbIJxo0hnkIlDphSYCQ9LRCC3wDlXf7P27nd7rSrB32GSHfL86rhtxbLisKXjBQ7gQEdkLynZJZ10Ztv0fE%2FYV5Jr5VextE757Ylzse%2B5bNuOKCPeUEUnQL0xlMK%2B8OWxYiyL%2FxMjGWGRFLA4nC9ZYZqVNNoYKZQ3I%2BBTIo7xKFaHnvMFq%2BmK%2BCRtCJlP25hczBtMPZa0IRyZMw5xhR1WoLZTJr7U4KCyrPp1DI%2FPkmjFO2wkJmglt0NaWqE0QUpRPzRwkoQNemnCw7s9BZ5JKNA%2FVo3dWEv9nipmMI1hjJoopDxhKHl4CgsqTHNjiANYUrjvgKYNaqTSvUgnQ%3D%3D  
+ ReadStream {
+  _readableState: 
+   ReadableState {
+     objectMode: false,
+     highWaterMark: 65536,
+     buffer: BufferList { head: [Object], tail: [Object], length: 1 },
+     length: 61770,
+     pipes: null,
+     pipesCount: 0,
+     flowing: null,
+     ended: true,
+     endEmitted: false,
+     reading: false,
+     sync: false,
+     needReadable: false,
+     emittedReadable: true,
+     readableListening: false,
+     resumeScheduled: false,
+     destroyed: false,
+     defaultEncoding: 'utf8',
+     awaitDrain: 0,
+     readingMore: false,
+     decoder: null,
+     encoding: null },
+  readable: true,
+  domain: null,
+  _events: { end: [Function] },
+  _eventsCount: 1,
+  _maxListeners: undefined,
+  path: '/var/folders/wc/0kl3_8m143q5x2g3gw8dpzx00000gn/T/firebase-functions-10637k2Ou7P2WXBtf.zip',
+  fd: 20,
+  flags: 'r',
+  mode: 438,
+  start: 0,
+  end: Infinity,
+  autoClose: true,
+  pos: 131072,
+  bytesRead: 61770 } 
+ Thu Jun 14 2018 09:56:54 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:54.950Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: functions folder uploaded successfully
+[debug] [2018-06-14T14:56:54.952Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/promociones-203414/locations/us-central1/functions  
+  
+ Thu Jun 14 2018 09:56:54 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:55.256Z] <<< HTTP RESPONSE 200
+[info] i  functions: updating function v1_createRedeem...
+[debug] [2018-06-14T14:56:55.258Z] Trigger is:  {"httpsTrigger":{}}
+[info] i  functions: updating function inactivateCouponsOfInactiveShop...
+[debug] [2018-06-14T14:56:55.259Z] Trigger is:  {"eventTrigger":{"resource":"projects/promociones-203414/databases/(default)/documents/shops/{shopID}","eventType":"providers/cloud.firestore/eventTypes/document.update","service":"firestore.googleapis.com"}}
+[info] i  functions: updating function updateShopRendundantData...
+[debug] [2018-06-14T14:56:55.259Z] Trigger is:  {"eventTrigger":{"resource":"projects/promociones-203414/databases/(default)/documents/shops/{shopID}","eventType":"providers/cloud.firestore/eventTypes/document.update","service":"firestore.googleapis.com"}}
+[info] i  functions: updating function prepareNewCoupon...
+[debug] [2018-06-14T14:56:55.259Z] Trigger is:  {"eventTrigger":{"resource":"projects/promociones-203414/databases/(default)/documents/coupons/{couponID}","eventType":"providers/cloud.firestore/eventTypes/document.create","service":"firestore.googleapis.com"}}
+[info] i  functions: updating function updateRedeemsCounts...
+[debug] [2018-06-14T14:56:55.259Z] Trigger is:  {"eventTrigger":{"resource":"projects/promociones-203414/databases/(default)/documents/redeems/{redeemId}","eventType":"providers/cloud.firestore/eventTypes/document.create","service":"firestore.googleapis.com"}}
+[info] i  functions: updating function aggregateCouponRanking...
+[debug] [2018-06-14T14:56:55.260Z] Trigger is:  {"eventTrigger":{"resource":"projects/promociones-203414/databases/(default)/documents/ratings/{rankinId}","eventType":"providers/cloud.firestore/eventTypes/document.create","service":"firestore.googleapis.com"}}
+[info] i  functions: updating function notificationRedeem...
+[debug] [2018-06-14T14:56:55.260Z] Trigger is:  {"eventTrigger":{"resource":"projects/promociones-203414/databases/(default)/documents/redeems/{redeemId}","eventType":"providers/cloud.firestore/eventTypes/document.create","service":"firestore.googleapis.com"}}
+[info] i  functions: updating function notificationNewCoupon...
+[debug] [2018-06-14T14:56:55.260Z] Trigger is:  {"eventTrigger":{"resource":"projects/promociones-203414/databases/(default)/documents/coupons/{couponId}","eventType":"providers/cloud.firestore/eventTypes/document.update","service":"firestore.googleapis.com"}}
+[debug] [2018-06-14T14:56:55.263Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/promociones-203414/locations/us-central1/functions/v1_createRedeem 
+query params: {"updateMask":"sourceUploadUrl,name,labels,httpsTrigger"} 
+ { sourceUploadUrl: 'https://storage.googleapis.com/gcf-upload-us-central1-e6221723-edbb-4b83-b3cf-9496f35f7c6b/86fed396-1f9e-4802-b8e3-079b61bf06a0.zip?GoogleAccessId=service-243095405179@gcf-admin-robot.iam.gserviceaccount.com&Expires=1528990014&Signature=LYReIbIJxo0hnkIlDphSYCQ9LRCC3wDlXf7P27nd7rSrB32GSHfL86rhtxbLisKXjBQ7gQEdkLynZJZ10Ztv0fE%2FYV5Jr5VextE757Ylzse%2B5bNuOKCPeUEUnQL0xlMK%2B8OWxYiyL%2FxMjGWGRFLA4nC9ZYZqVNNoYKZQ3I%2BBTIo7xKFaHnvMFq%2BmK%2BCRtCJlP25hczBtMPZa0IRyZMw5xhR1WoLZTJr7U4KCyrPp1DI%2FPkmjFO2wkJmglt0NaWqE0QUpRPzRwkoQNemnCw7s9BZ5JKNA%2FVo3dWEv9nipmMI1hjJoopDxhKHl4CgsqTHNjiANYUrjvgKYNaqTSvUgnQ%3D%3D',
+  name: 'projects/promociones-203414/locations/us-central1/functions/v1_createRedeem',
+  labels: { 'deployment-tool': 'cli-firebase' },
+  httpsTrigger: {} } 
+ Thu Jun 14 2018 09:56:55 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:55.265Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/promociones-203414/locations/us-central1/functions/inactivateCouponsOfInactiveShop 
+query params: {"updateMask":"sourceUploadUrl,name,labels,eventTrigger.resource,eventTrigger.eventType,eventTrigger.service"} 
+ { sourceUploadUrl: 'https://storage.googleapis.com/gcf-upload-us-central1-e6221723-edbb-4b83-b3cf-9496f35f7c6b/86fed396-1f9e-4802-b8e3-079b61bf06a0.zip?GoogleAccessId=service-243095405179@gcf-admin-robot.iam.gserviceaccount.com&Expires=1528990014&Signature=LYReIbIJxo0hnkIlDphSYCQ9LRCC3wDlXf7P27nd7rSrB32GSHfL86rhtxbLisKXjBQ7gQEdkLynZJZ10Ztv0fE%2FYV5Jr5VextE757Ylzse%2B5bNuOKCPeUEUnQL0xlMK%2B8OWxYiyL%2FxMjGWGRFLA4nC9ZYZqVNNoYKZQ3I%2BBTIo7xKFaHnvMFq%2BmK%2BCRtCJlP25hczBtMPZa0IRyZMw5xhR1WoLZTJr7U4KCyrPp1DI%2FPkmjFO2wkJmglt0NaWqE0QUpRPzRwkoQNemnCw7s9BZ5JKNA%2FVo3dWEv9nipmMI1hjJoopDxhKHl4CgsqTHNjiANYUrjvgKYNaqTSvUgnQ%3D%3D',
+  name: 'projects/promociones-203414/locations/us-central1/functions/inactivateCouponsOfInactiveShop',
+  labels: { 'deployment-tool': 'cli-firebase' },
+  eventTrigger: 
+   { resource: 'projects/promociones-203414/databases/(default)/documents/shops/{shopID}',
+     eventType: 'providers/cloud.firestore/eventTypes/document.update',
+     service: 'firestore.googleapis.com' } } 
+ Thu Jun 14 2018 09:56:55 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:55.266Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/promociones-203414/locations/us-central1/functions/updateShopRendundantData 
+query params: {"updateMask":"sourceUploadUrl,name,labels,eventTrigger.resource,eventTrigger.eventType,eventTrigger.service"} 
+ { sourceUploadUrl: 'https://storage.googleapis.com/gcf-upload-us-central1-e6221723-edbb-4b83-b3cf-9496f35f7c6b/86fed396-1f9e-4802-b8e3-079b61bf06a0.zip?GoogleAccessId=service-243095405179@gcf-admin-robot.iam.gserviceaccount.com&Expires=1528990014&Signature=LYReIbIJxo0hnkIlDphSYCQ9LRCC3wDlXf7P27nd7rSrB32GSHfL86rhtxbLisKXjBQ7gQEdkLynZJZ10Ztv0fE%2FYV5Jr5VextE757Ylzse%2B5bNuOKCPeUEUnQL0xlMK%2B8OWxYiyL%2FxMjGWGRFLA4nC9ZYZqVNNoYKZQ3I%2BBTIo7xKFaHnvMFq%2BmK%2BCRtCJlP25hczBtMPZa0IRyZMw5xhR1WoLZTJr7U4KCyrPp1DI%2FPkmjFO2wkJmglt0NaWqE0QUpRPzRwkoQNemnCw7s9BZ5JKNA%2FVo3dWEv9nipmMI1hjJoopDxhKHl4CgsqTHNjiANYUrjvgKYNaqTSvUgnQ%3D%3D',
+  name: 'projects/promociones-203414/locations/us-central1/functions/updateShopRendundantData',
+  labels: { 'deployment-tool': 'cli-firebase' },
+  eventTrigger: 
+   { resource: 'projects/promociones-203414/databases/(default)/documents/shops/{shopID}',
+     eventType: 'providers/cloud.firestore/eventTypes/document.update',
+     service: 'firestore.googleapis.com' } } 
+ Thu Jun 14 2018 09:56:55 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:55.266Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/promociones-203414/locations/us-central1/functions/prepareNewCoupon 
+query params: {"updateMask":"sourceUploadUrl,name,labels,eventTrigger.resource,eventTrigger.eventType,eventTrigger.service"} 
+ { sourceUploadUrl: 'https://storage.googleapis.com/gcf-upload-us-central1-e6221723-edbb-4b83-b3cf-9496f35f7c6b/86fed396-1f9e-4802-b8e3-079b61bf06a0.zip?GoogleAccessId=service-243095405179@gcf-admin-robot.iam.gserviceaccount.com&Expires=1528990014&Signature=LYReIbIJxo0hnkIlDphSYCQ9LRCC3wDlXf7P27nd7rSrB32GSHfL86rhtxbLisKXjBQ7gQEdkLynZJZ10Ztv0fE%2FYV5Jr5VextE757Ylzse%2B5bNuOKCPeUEUnQL0xlMK%2B8OWxYiyL%2FxMjGWGRFLA4nC9ZYZqVNNoYKZQ3I%2BBTIo7xKFaHnvMFq%2BmK%2BCRtCJlP25hczBtMPZa0IRyZMw5xhR1WoLZTJr7U4KCyrPp1DI%2FPkmjFO2wkJmglt0NaWqE0QUpRPzRwkoQNemnCw7s9BZ5JKNA%2FVo3dWEv9nipmMI1hjJoopDxhKHl4CgsqTHNjiANYUrjvgKYNaqTSvUgnQ%3D%3D',
+  name: 'projects/promociones-203414/locations/us-central1/functions/prepareNewCoupon',
+  labels: { 'deployment-tool': 'cli-firebase' },
+  eventTrigger: 
+   { resource: 'projects/promociones-203414/databases/(default)/documents/coupons/{couponID}',
+     eventType: 'providers/cloud.firestore/eventTypes/document.create',
+     service: 'firestore.googleapis.com' } } 
+ Thu Jun 14 2018 09:56:55 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:55.267Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/promociones-203414/locations/us-central1/functions/updateRedeemsCounts 
+query params: {"updateMask":"sourceUploadUrl,name,labels,eventTrigger.resource,eventTrigger.eventType,eventTrigger.service"} 
+ { sourceUploadUrl: 'https://storage.googleapis.com/gcf-upload-us-central1-e6221723-edbb-4b83-b3cf-9496f35f7c6b/86fed396-1f9e-4802-b8e3-079b61bf06a0.zip?GoogleAccessId=service-243095405179@gcf-admin-robot.iam.gserviceaccount.com&Expires=1528990014&Signature=LYReIbIJxo0hnkIlDphSYCQ9LRCC3wDlXf7P27nd7rSrB32GSHfL86rhtxbLisKXjBQ7gQEdkLynZJZ10Ztv0fE%2FYV5Jr5VextE757Ylzse%2B5bNuOKCPeUEUnQL0xlMK%2B8OWxYiyL%2FxMjGWGRFLA4nC9ZYZqVNNoYKZQ3I%2BBTIo7xKFaHnvMFq%2BmK%2BCRtCJlP25hczBtMPZa0IRyZMw5xhR1WoLZTJr7U4KCyrPp1DI%2FPkmjFO2wkJmglt0NaWqE0QUpRPzRwkoQNemnCw7s9BZ5JKNA%2FVo3dWEv9nipmMI1hjJoopDxhKHl4CgsqTHNjiANYUrjvgKYNaqTSvUgnQ%3D%3D',
+  name: 'projects/promociones-203414/locations/us-central1/functions/updateRedeemsCounts',
+  labels: { 'deployment-tool': 'cli-firebase' },
+  eventTrigger: 
+   { resource: 'projects/promociones-203414/databases/(default)/documents/redeems/{redeemId}',
+     eventType: 'providers/cloud.firestore/eventTypes/document.create',
+     service: 'firestore.googleapis.com' } } 
+ Thu Jun 14 2018 09:56:55 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:55.267Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/promociones-203414/locations/us-central1/functions/aggregateCouponRanking 
+query params: {"updateMask":"sourceUploadUrl,name,labels,eventTrigger.resource,eventTrigger.eventType,eventTrigger.service"} 
+ { sourceUploadUrl: 'https://storage.googleapis.com/gcf-upload-us-central1-e6221723-edbb-4b83-b3cf-9496f35f7c6b/86fed396-1f9e-4802-b8e3-079b61bf06a0.zip?GoogleAccessId=service-243095405179@gcf-admin-robot.iam.gserviceaccount.com&Expires=1528990014&Signature=LYReIbIJxo0hnkIlDphSYCQ9LRCC3wDlXf7P27nd7rSrB32GSHfL86rhtxbLisKXjBQ7gQEdkLynZJZ10Ztv0fE%2FYV5Jr5VextE757Ylzse%2B5bNuOKCPeUEUnQL0xlMK%2B8OWxYiyL%2FxMjGWGRFLA4nC9ZYZqVNNoYKZQ3I%2BBTIo7xKFaHnvMFq%2BmK%2BCRtCJlP25hczBtMPZa0IRyZMw5xhR1WoLZTJr7U4KCyrPp1DI%2FPkmjFO2wkJmglt0NaWqE0QUpRPzRwkoQNemnCw7s9BZ5JKNA%2FVo3dWEv9nipmMI1hjJoopDxhKHl4CgsqTHNjiANYUrjvgKYNaqTSvUgnQ%3D%3D',
+  name: 'projects/promociones-203414/locations/us-central1/functions/aggregateCouponRanking',
+  labels: { 'deployment-tool': 'cli-firebase' },
+  eventTrigger: 
+   { resource: 'projects/promociones-203414/databases/(default)/documents/ratings/{rankinId}',
+     eventType: 'providers/cloud.firestore/eventTypes/document.create',
+     service: 'firestore.googleapis.com' } } 
+ Thu Jun 14 2018 09:56:55 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:55.268Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/promociones-203414/locations/us-central1/functions/notificationRedeem 
+query params: {"updateMask":"sourceUploadUrl,name,labels,eventTrigger.resource,eventTrigger.eventType,eventTrigger.service"} 
+ { sourceUploadUrl: 'https://storage.googleapis.com/gcf-upload-us-central1-e6221723-edbb-4b83-b3cf-9496f35f7c6b/86fed396-1f9e-4802-b8e3-079b61bf06a0.zip?GoogleAccessId=service-243095405179@gcf-admin-robot.iam.gserviceaccount.com&Expires=1528990014&Signature=LYReIbIJxo0hnkIlDphSYCQ9LRCC3wDlXf7P27nd7rSrB32GSHfL86rhtxbLisKXjBQ7gQEdkLynZJZ10Ztv0fE%2FYV5Jr5VextE757Ylzse%2B5bNuOKCPeUEUnQL0xlMK%2B8OWxYiyL%2FxMjGWGRFLA4nC9ZYZqVNNoYKZQ3I%2BBTIo7xKFaHnvMFq%2BmK%2BCRtCJlP25hczBtMPZa0IRyZMw5xhR1WoLZTJr7U4KCyrPp1DI%2FPkmjFO2wkJmglt0NaWqE0QUpRPzRwkoQNemnCw7s9BZ5JKNA%2FVo3dWEv9nipmMI1hjJoopDxhKHl4CgsqTHNjiANYUrjvgKYNaqTSvUgnQ%3D%3D',
+  name: 'projects/promociones-203414/locations/us-central1/functions/notificationRedeem',
+  labels: { 'deployment-tool': 'cli-firebase' },
+  eventTrigger: 
+   { resource: 'projects/promociones-203414/databases/(default)/documents/redeems/{redeemId}',
+     eventType: 'providers/cloud.firestore/eventTypes/document.create',
+     service: 'firestore.googleapis.com' } } 
+ Thu Jun 14 2018 09:56:55 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:55.268Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/promociones-203414/locations/us-central1/functions/notificationNewCoupon 
+query params: {"updateMask":"sourceUploadUrl,name,labels,eventTrigger.resource,eventTrigger.eventType,eventTrigger.service"} 
+ { sourceUploadUrl: 'https://storage.googleapis.com/gcf-upload-us-central1-e6221723-edbb-4b83-b3cf-9496f35f7c6b/86fed396-1f9e-4802-b8e3-079b61bf06a0.zip?GoogleAccessId=service-243095405179@gcf-admin-robot.iam.gserviceaccount.com&Expires=1528990014&Signature=LYReIbIJxo0hnkIlDphSYCQ9LRCC3wDlXf7P27nd7rSrB32GSHfL86rhtxbLisKXjBQ7gQEdkLynZJZ10Ztv0fE%2FYV5Jr5VextE757Ylzse%2B5bNuOKCPeUEUnQL0xlMK%2B8OWxYiyL%2FxMjGWGRFLA4nC9ZYZqVNNoYKZQ3I%2BBTIo7xKFaHnvMFq%2BmK%2BCRtCJlP25hczBtMPZa0IRyZMw5xhR1WoLZTJr7U4KCyrPp1DI%2FPkmjFO2wkJmglt0NaWqE0QUpRPzRwkoQNemnCw7s9BZ5JKNA%2FVo3dWEv9nipmMI1hjJoopDxhKHl4CgsqTHNjiANYUrjvgKYNaqTSvUgnQ%3D%3D',
+  name: 'projects/promociones-203414/locations/us-central1/functions/notificationNewCoupon',
+  labels: { 'deployment-tool': 'cli-firebase' },
+  eventTrigger: 
+   { resource: 'projects/promociones-203414/databases/(default)/documents/coupons/{couponId}',
+     eventType: 'providers/cloud.firestore/eventTypes/document.update',
+     service: 'firestore.googleapis.com' } } 
+ Thu Jun 14 2018 09:56:55 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:55.629Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:55.634Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:55.637Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:55.638Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:55.639Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:55.656Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:55.661Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:55.663Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:55.665Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/promociones-203414/locations/us-central1/functions  
+  
+ Thu Jun 14 2018 09:56:55 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:55.956Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:55.958Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL3YxX2NyZWF0ZVJlZGVlbS9TM3lvQXJCTndwcw  
+  
+ Thu Jun 14 2018 09:56:55 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:55.959Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL2luYWN0aXZhdGVDb3Vwb25zT2ZJbmFjdGl2ZVNob3AvVlFhb0JIbEVxSFU  
+  
+ Thu Jun 14 2018 09:56:55 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:55.959Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL3VwZGF0ZVNob3BSZW5kdW5kYW50RGF0YS95andfbWk2T2tCdw  
+  
+ Thu Jun 14 2018 09:56:55 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:55.960Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL3ByZXBhcmVOZXdDb3Vwb24vWjM3V2U2NnI5MUU  
+  
+ Thu Jun 14 2018 09:56:55 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:55.960Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL3VwZGF0ZVJlZGVlbXNDb3VudHMvUjhBeVhMS1dwR00  
+  
+ Thu Jun 14 2018 09:56:55 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:55.960Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL2FnZ3JlZ2F0ZUNvdXBvblJhbmtpbmcvUmFVRXBDeFBqYVU  
+  
+ Thu Jun 14 2018 09:56:55 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:55.960Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL25vdGlmaWNhdGlvblJlZGVlbS9hTmRpTk5CTkNMTQ  
+  
+ Thu Jun 14 2018 09:56:55 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:55.960Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL25vdGlmaWNhdGlvbk5ld0NvdXBvbi96dTlFbHItUEtRSQ  
+  
+ Thu Jun 14 2018 09:56:55 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:56.180Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:56.216Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:56.236Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:56.237Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:56.244Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:56.247Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:56.261Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:56.269Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:58.181Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL3YxX2NyZWF0ZVJlZGVlbS9TM3lvQXJCTndwcw  
+  
+ Thu Jun 14 2018 09:56:58 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:58.222Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL25vdGlmaWNhdGlvblJlZGVlbS9hTmRpTk5CTkNMTQ  
+  
+ Thu Jun 14 2018 09:56:58 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:58.238Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL2luYWN0aXZhdGVDb3Vwb25zT2ZJbmFjdGl2ZVNob3AvVlFhb0JIbEVxSFU  
+  
+ Thu Jun 14 2018 09:56:58 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:58.238Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL3VwZGF0ZVNob3BSZW5kdW5kYW50RGF0YS95andfbWk2T2tCdw  
+  
+ Thu Jun 14 2018 09:56:58 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:58.244Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL3ByZXBhcmVOZXdDb3Vwb24vWjM3V2U2NnI5MUU  
+  
+ Thu Jun 14 2018 09:56:58 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:58.249Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL3VwZGF0ZVJlZGVlbXNDb3VudHMvUjhBeVhMS1dwR00  
+  
+ Thu Jun 14 2018 09:56:58 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:58.262Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL2FnZ3JlZ2F0ZUNvdXBvblJhbmtpbmcvUmFVRXBDeFBqYVU  
+  
+ Thu Jun 14 2018 09:56:58 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:58.269Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL25vdGlmaWNhdGlvbk5ld0NvdXBvbi96dTlFbHItUEtRSQ  
+  
+ Thu Jun 14 2018 09:56:58 GMT-0500 (CDT)
+[debug] [2018-06-14T14:56:58.429Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:58.456Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:58.484Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:58.485Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:58.491Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:58.501Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:58.516Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:56:58.518Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:57:00.431Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL3YxX2NyZWF0ZVJlZGVlbS9TM3lvQXJCTndwcw  
+  
+ Thu Jun 14 2018 09:57:00 GMT-0500 (CDT)
+[debug] [2018-06-14T14:57:00.462Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL3VwZGF0ZVNob3BSZW5kdW5kYW50RGF0YS95andfbWk2T2tCdw  
+  
+ Thu Jun 14 2018 09:57:00 GMT-0500 (CDT)
+[debug] [2018-06-14T14:57:00.486Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL25vdGlmaWNhdGlvblJlZGVlbS9hTmRpTk5CTkNMTQ  
+  
+ Thu Jun 14 2018 09:57:00 GMT-0500 (CDT)
+[debug] [2018-06-14T14:57:00.486Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL2FnZ3JlZ2F0ZUNvdXBvblJhbmtpbmcvUmFVRXBDeFBqYVU  
+  
+ Thu Jun 14 2018 09:57:00 GMT-0500 (CDT)
+[debug] [2018-06-14T14:57:00.491Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL25vdGlmaWNhdGlvbk5ld0NvdXBvbi96dTlFbHItUEtRSQ  
+  
+ Thu Jun 14 2018 09:57:00 GMT-0500 (CDT)
+[debug] [2018-06-14T14:57:00.504Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL2luYWN0aXZhdGVDb3Vwb25zT2ZJbmFjdGl2ZVNob3AvVlFhb0JIbEVxSFU  
+  
+ Thu Jun 14 2018 09:57:00 GMT-0500 (CDT)
+[debug] [2018-06-14T14:57:00.516Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL3VwZGF0ZVJlZGVlbXNDb3VudHMvUjhBeVhMS1dwR00  
+  
+ Thu Jun 14 2018 09:57:00 GMT-0500 (CDT)
+[debug] [2018-06-14T14:57:00.519Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL3ByZXBhcmVOZXdDb3Vwb24vWjM3V2U2NnI5MUU  
+  
+ Thu Jun 14 2018 09:57:00 GMT-0500 (CDT)
+[debug] [2018-06-14T14:57:00.689Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:57:00.708Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:57:00.716Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:57:00.736Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:57:00.758Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:57:00.763Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:57:00.788Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:57:00.792Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-14T14:57:02.693Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL3YxX2NyZWF0ZVJlZGVlbS9TM3lvQXJCTndwcw  
+  
+ Thu Jun 14 2018 09:57:02 GMT-0500 (CDT)
+[debug] [2018-06-14T14:57:02.709Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL25vdGlmaWNhdGlvbk5ld0NvdXBvbi96dTlFbHItUEtRSQ  
+  
+ Thu Jun 14 2018 09:57:02 GMT-0500 (CDT)
+[debug] [2018-06-14T14:57:02.716Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL3VwZGF0ZVNob3BSZW5kdW5kYW50RGF0YS95andfbWk2T2tCdw  
+  
+ Thu Jun 14 2018 09:57:02 GMT-0500 (CDT)
+[debug] [2018-06-14T14:57:02.739Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL2FnZ3JlZ2F0ZUNvdXBvblJhbmtpbmcvUmFVRXBDeFBqYVU  
+  
+ Thu Jun 14 2018 09:57:02 GMT-0500 (CDT)
+[debug] [2018-06-14T14:57:02.759Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL2luYWN0aXZhdGVDb3Vwb25zT2ZJbmFjdGl2ZVNob3AvVlFhb0JIbEVxSFU  
+  
+ Thu Jun 14 2018 09:57:02 GMT-0500 (CDT)
+[debug] [2018-06-14T14:57:02.763Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL25vdGlmaWNhdGlvblJlZGVlbS9hTmRpTk5CTkNMTQ  
+  
+ Thu Jun 14 2018 09:57:02 GMT-0500 (CDT)
+[debug] [2018-06-14T14:57:02.789Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL3VwZGF0ZVJlZGVlbXNDb3VudHMvUjhBeVhMS1dwR00  
+  
+ Thu Jun 14 2018 09:57:02 GMT-0500 (CDT)
+[debug] [2018-06-14T14:57:02.792Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/cHJvbW9jaW9uZXMtMjAzNDE0L3VzLWNlbnRyYWwxL3ByZXBhcmVOZXdDb3Vwb24vWjM3V2U2NnI5MUU  
+  
+ Thu Jun 14 2018 09:57:02 GMT-0500 (CDT)

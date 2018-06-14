@@ -34,3 +34,9 @@ exports.updateRedeemsCounts =  RedeemsObsv.updateRedeemsCounts
 
 exports.aggregateCouponRanking =  RatingsObsv.aggregateCouponRating
 
+exports.notificationRedeem =  RedeemsObsv.notificationRedeem
+
+exports.notificationNewCoupon =  CouponsObsv.notificationNewCoupon
+
+
+
